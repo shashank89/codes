@@ -1,0 +1,14 @@
+string diff(string first, string second)
+{
+    int l=second.size();
+    int l1=first.size();
+    for(int i=0;i<l;i++)
+    {
+        second[i]=(char)((9-(second[i]-'0'))+'0');
+    }
+    for(int i=l;i<l1;i++){second='9'+second;}
+    string str= addBitStrings(second,"1");
+    str=addBitStrings(first,str);
+    str=str.substr(1,str.size());
+    return str;
+}
