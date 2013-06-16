@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+void swap ( int* a, int* b )
+{
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition (int *a, int l, int h)
+{
+    int t=l-1;
+    int pivot=a[h];
+    for(int i=l;i<=h-1;i++)
+    {
+        if(a[i]<=pivot)
+        {
+            t=t+1;
+            swap(&a[t],&a[i]);
+        }
+    }
+    
+     swap (&a[t + 1], &a[h]);
+     return (t + 1);
+}
+
+
+
+void quicksort(int *a, int l, int h)
+{
+    if(l<h)
+    {
+        int t=partition(a,l,h);
+        quicksort(a,l,t-1);
+        quicksort(a,t+1,h);
+    }
+}
+
+
+
+int main() {
+  
+    int t;
+    cin>>t;
+    while(t>0)
+    {
+        int n=0;
+        cin>>n;
+        int first[1000],second[1000];
+        for(int i=0;i<1000;i++)
+        {
+            first[i]=0;
+            second[i]=0;
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            cin>>first[i];
+        }
+        for(int i=0;i<n;i++)
+        {
+            cin>>second[i];
+        }
+        
+        quicksort(first,0,n-1);
+        quicksort(second,0,n-1);
+        
+        long long int sum=0;
+        for(int i=0;i<n;i++)
+        {
+            sum=sum+first[i]*second[i];
+        }
+        
+        cout<<sum<<endl;
+        t--;
+    }
+    return 0;
+}
