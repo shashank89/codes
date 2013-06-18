@@ -1,0 +1,44 @@
+
+
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+using namespace std;
+
+int main() {
+   
+    int t1=0;
+    cin>>t1;
+    while(t1>0)
+    {
+      long long int f,s,t,a,c,n,d,count=1,sum=0;;
+      long double b,temp1,temp2,temp3;
+      cin>>f;
+      cin>>s;
+      cin>>t;
+      a=f+s;
+      c=12*t;
+      temp1=7+2*((long double)(t-s)/(f+s));
+      temp2=48*((long double)t/(f+s));
+      temp3=sqrtl(pow(temp1,2)-temp2);
+      n=(long long int)(llrintl)(temp1+temp3)/2;
+      cout<<n<<endl;
+      d=(llrintl)(s-f)/(n-6);
+      a=f-(2*d);
+      cout<<a;
+      sum=a+d;
+     
+      while(count<n)
+      {
+         cout<<" "<<sum;
+         sum=sum+d;
+         count++;
+      }
+      cout<<endl;
+      
+      t1--;
+        
+    }
+   
+    return 0;
+}
